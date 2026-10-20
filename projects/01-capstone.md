@@ -4,12 +4,10 @@
 
 **상담 데이터 준비부터 인증·세션·대화 저장까지 연결한 AI 상담 보조 프로토타입**
 
-| 구분 | 내용 |
-| --- | --- |
-| 팀과 역할 | 3인 팀 팀장 · 백엔드 구현·통합, 일정·역할 조율 |
-| 담당 범위 | FastAPI, JWT, 사용자·세션 소유권 검사, 메시지·DB 흐름 / 전처리·LLM 연동 참여 |
-| 기술 | Python, FastAPI, SQLAlchemy, JWT, Transformers, PEFT/LoRA |
-| 공개 코드 | [capdesign](https://github.com/kangyunseong/capdesign) — 응답 서비스 파일 1개 |
+- **팀과 역할**: 3인 팀 팀장 · 백엔드 구현·통합, 일정·역할 조율
+- **담당 범위**: FastAPI, JWT, 사용자·세션 소유권 검사, 메시지·DB 흐름 / 전처리·LLM 연동 참여
+- **기술**: Python, FastAPI, SQLAlchemy, JWT, Transformers, PEFT/LoRA
+- **공개 코드**: [capdesign](https://github.com/kangyunseong/capdesign) — 응답 서비스 파일 1개
 
 ## 문제
 

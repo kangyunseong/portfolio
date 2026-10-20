@@ -4,12 +4,10 @@
 
 **축제·여행 코스·주변 장소를 한 흐름으로 탐색하는 팀 서비스**
 
-| 구분 | 내용 |
-| --- | --- |
-| 프로젝트 | 2025 충청톤 / 세종 DX 해커톤 · 5인 팀 |
-| 나의 역할 | 백엔드 개발 — 수집·FastAPI·SQLAlchemy·DB 연동, 통합 오류 수정 |
-| 기술 | Python 3.11, FastAPI, SQLAlchemy, Requests, Selenium, BeautifulSoup, Kakao Local |
-| 소스 | [finislesennuis/kuku](https://github.com/finislesennuis/kuku) — 최종 팀 저장소 |
+- **프로젝트**: 2025 충청톤 / 세종 DX 해커톤 · 5인 팀
+- **나의 역할**: 백엔드 개발 — 수집·FastAPI·SQLAlchemy·DB 연동, 통합 오류 수정
+- **기술**: Python 3.11, FastAPI, SQLAlchemy, Requests, Selenium, BeautifulSoup, Kakao Local
+- **소스**: [finislesennuis/kuku](https://github.com/finislesennuis/kuku) — 최종 팀 저장소
 
 ## 문제와 팀 서비스
 

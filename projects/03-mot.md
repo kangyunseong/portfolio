@@ -4,12 +4,10 @@
 
 **객체를 다시 찾는 것과 같은 ID로 이어 가는 것을 구분한 두 펜 추적 연구**
 
-| 구분 | 내용 |
-| --- | --- |
-| 문제 | 접근·가림·재분리 구간의 ID 전환 |
-| 나의 역할 | 키프레임 추출·association 로직, SAM3 연동, 수동 GT 검수·실패 분석 |
-| 기술 | Python, OpenCV, NumPy, 사전학습 SAM3 활용 |
-| 소스 | [MOT-project](https://github.com/kangyunseong/MOT-project) — 키프레임·ID 연결 핵심 코드 |
+- **문제**: 접근·가림·재분리 구간의 ID 전환
+- **나의 역할**: 키프레임 추출·association 로직, SAM3 연동, 수동 GT 검수·실패 분석
+- **기술**: Python, OpenCV, NumPy, 사전학습 SAM3 활용
+- **소스**: [MOT-project](https://github.com/kangyunseong/MOT-project) — 키프레임·ID 연결 핵심 코드
 
 ## 문제
 
