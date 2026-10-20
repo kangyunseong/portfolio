@@ -1,0 +1,10 @@
+# 공개 문서와 검토된 이미지 외 파일은 기본적으로 제외합니다.
+*
+!.gitignore
+!README.md
+!projects/
+!projects/*.md
+!assets/
+!assets/*/
+!assets/*/*.png
+!assets/*/*.svg
