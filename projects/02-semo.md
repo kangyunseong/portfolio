@@ -21,11 +21,13 @@
 
 *팀 서비스 화면. 출처: 「세종DX해커톤 발표자료 - 최종본」 5·6쪽에서 화면 영역만 추출했습니다. 당시 발표 화면이며, 프론트엔드는 팀 공동 결과물입니다. 제 담당 범위는 수집·API·DB와 통합 디버깅입니다.*
 
+화면은 왼쪽부터 **① 지역별 축제 지도 → ② 축제 목록 → ③ 코스·장소 탐색**입니다. 모바일에서는 위에서 아래로 표시됩니다. ①·②는 축제 위치·설명 데이터, ③은 코스와 장소의 연결을 보여 줍니다. 아래 두 수정 사례는 이 화면에 전달할 데이터의 필드와 관계를 맞추는 백엔드 작업입니다.
+
 ## 설계와 구현
 
 **API 요청 → 수집 서버 → 사이트별 파서 → 모델 저장 → 조회 API** 흐름으로 구성했습니다. API 서버는 로컬 크롤러에 HTTP 요청을 보내고, 크롤러는 축제·코스·주변 장소 유형에 따라 수집 함수를 선택합니다. 데이터 소스는 공식 웹사이트 HTML과 Kakao Local API입니다. 정부 공공데이터 OpenAPI 연동은 현재 소스에서 확인되지 않아 구현 항목에 넣지 않았습니다.
 
-FastAPI의 입력·응답 스키마와 SQLAlchemy 모델을 연결하고, 축제·장소·코스 검색 및 코스별 장소 조회 경로를 다뤘습니다. 수집 서버 분리는 실행 책임을 나눈 구조이며, 현재 전체 수집은 순차 호출입니다. 병렬 수집·분산 작업 큐를 구축한 것으로 설명하지 않습니다. 근거: [backend/crawler_api.py](https://github.com/finislesennuis/kuku/blob/e3d8e7a1eeab4784a9897afd0be729b83e703201/backend/crawler_api.py#L37-L52), [backend/local_crawler.py](https://github.com/finislesennuis/kuku/blob/e3d8e7a1eeab4784a9897afd0be729b83e703201/backend/local_crawler.py#L31-L122), [backend/search.py](https://github.com/finislesennuis/kuku/blob/e3d8e7a1eeab4784a9897afd0be729b83e703201/backend/search.py#L10-L73).
+FastAPI의 입력·응답 스키마와 SQLAlchemy 모델을 연결하고, 축제·장소·코스 검색 및 코스별 장소 조회 경로를 다뤘습니다. 수집 서버 분리는 실행 책임을 나눈 구조이며, 현재 전체 수집은 순차 호출입니다. 비동기 작업 큐나 병렬 수집으로 확장하려면 별도의 실행·실패 관리가 필요합니다. 근거: [backend/crawler_api.py](https://github.com/finislesennuis/kuku/blob/e3d8e7a1eeab4784a9897afd0be729b83e703201/backend/crawler_api.py#L37-L52), [backend/local_crawler.py](https://github.com/finislesennuis/kuku/blob/e3d8e7a1eeab4784a9897afd0be729b83e703201/backend/local_crawler.py#L31-L122), [backend/search.py](https://github.com/finislesennuis/kuku/blob/e3d8e7a1eeab4784a9897afd0be729b83e703201/backend/search.py#L10-L73).
 
 ## 디버깅 1 · 필드명은 API와 DB 사이의 계약
 
@@ -50,3 +52,5 @@ FastAPI의 입력·응답 스키마와 SQLAlchemy 모델을 연결하고, 축제
 발표자료는 당시 팀 서비스의 화면·맥락을 보여 주며 현재 운영 상태를 증명하지 않습니다. 코드 검토에서는 주변 장소 결과의 `x/y` 누락, 저장 시 경도·위도 매핑, 코스 수집에서 계산한 좌표가 저장되지 않는 문제가 남아 있음을 확인했습니다. 좌표 계약 테스트와 재수집·부분 실패 시 저장 일관성이 다음 개선 과제입니다. 근거: [backend/s_place.py](https://github.com/finislesennuis/kuku/blob/e3d8e7a1eeab4784a9897afd0be729b83e703201/backend/s_place.py#L62-L131), [backend/s_place.py](https://github.com/finislesennuis/kuku/blob/e3d8e7a1eeab4784a9897afd0be729b83e703201/backend/s_place.py#L172-L215), [backend/course_crawler.py](https://github.com/finislesennuis/kuku/blob/e3d8e7a1eeab4784a9897afd0be729b83e703201/backend/course_crawler.py#L73-L157).
 
 발표자료의 전국 확장·광고 모델 등은 향후 구상으로 구분했으며, 서비스 성과로 포함하지 않았습니다.
+
+[← 상담 sLLM](01-capstone.md) · [전체 프로젝트](../README.md) · [MOT 연구 →](03-mot.md)
